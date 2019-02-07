@@ -14,6 +14,7 @@
 
 int main(int argc, char **argv) {
 
+  // scans for the computer input after ./a.out
   double balance = atof(argv[1]);
   double contribution = atof(argv[2]);
   double rateOfReturn = atof(argv[3]);
@@ -22,18 +23,20 @@ int main(int argc, char **argv) {
 
   double adjustedRateReturn, interestGained, totalInterest;
   int months;
-  int count = 1;
+  int count = 1; // used as a counter for months
 
+  //Formula that solves for the adjusted rate of return
   adjustedRateReturn = (((1 + rateOfReturn) / (1 + inflationRate)) - 1) / 12;
   months = years * 12;
 
-
+  // Contdition for monthy contribution that is greater than 18500
   if ((contribution * 12) > 18500) {
     printf("Illegal: monthly contributions exceed $18,500 annual limit.");
     return 0;
 }
   printf("Month Interest Balance\n");
 
+    //loop that prints the monthly / interest for the month / total balance
     while (count <= months) {
       interestGained = ((balance) * (adjustedRateReturn + 1)) - (balance);
       balance = balance + interestGained + contribution;
